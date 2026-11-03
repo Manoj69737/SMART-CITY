@@ -34,6 +34,55 @@ The system manages the following entities:
 17. **Complaints** - Citizen complaints
 18. **Complaint Updates** - Complaint status updates
 
+## Quick Startup
+
+Use this when you want to start the project again quickly:
+
+### 1) Start the backend API
+
+From the project root:
+
+```bash
+cd "D:\Project\SMART CITY BOIS"
+.\env\Scripts\python.exe main.py
+```
+
+The API runs on:
+
+- http://localhost:8000
+- Swagger docs: http://localhost:8000/docs
+
+### 2) Start the frontend
+
+From the frontend folder:
+
+```bash
+cd "D:\Project\SMART CITY BOIS\frontend"
+npm install
+npm run dev -- --host 0.0.0.0 --port 8080
+```
+
+The web app runs on:
+
+- http://localhost:8080
+
+### 3) Login
+
+Default admin credentials:
+
+- Username: `admin`
+- Password: `admin123`
+
+### 4) If the backend port is blocked
+
+If port 8000 is already in use, stop the stale Python process first:
+
+```powershell
+Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -eq 8000 } | Select-Object -ExpandProperty OwningProcess
+# then terminate the stale process if needed
+Stop-Process -Id <PID> -Force
+```
+
 ## Installation
 
 ### Prerequisites
@@ -53,7 +102,6 @@ python -m venv venv
 ```
 
 3. **Activate the virtual environment**:
-
    - On Windows:
      ```bash
      venv\Scripts\activate
@@ -70,7 +118,6 @@ pip install -r requirements.txt
 ```
 
 5. **Set up the database**:
-
    - Create a MySQL database:
      ```sql
      CREATE DATABASE smart_city_management;

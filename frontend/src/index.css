@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -54,10 +54,22 @@
     --info-foreground: 222 47% 6%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(172 66% 50%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(199 89% 48% / 0.15) 0%, transparent 70%);
-    
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(199 89% 48%) 0%,
+      hsl(172 66% 50%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(222 47% 10%) 0%,
+      hsl(222 47% 8%) 100%
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      hsl(199 89% 48% / 0.15) 0%,
+      transparent 70%
+    );
+
     /* Shadows */
     --shadow-sm: 0 1px 2px hsl(222 47% 4% / 0.5);
     --shadow-md: 0 4px 12px hsl(222 47% 4% / 0.6);
@@ -78,7 +90,7 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
   }
 
   /* Custom scrollbar */
@@ -111,14 +123,18 @@
   }
 
   .gradient-border::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     padding: 1px;
     border-radius: inherit;
     background: var(--gradient-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
@@ -181,7 +197,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px hsl(199 89% 48% / 0.2);
   }
   50% {
