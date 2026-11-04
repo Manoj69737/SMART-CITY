@@ -70,6 +70,16 @@ export default function Citizens() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const phone = String(formData.get("phone") ?? "").trim();
+
+    if (!/^\d{10}$/.test(phone)) {
+      toast({
+        title: "Invalid phone number",
+        description: "Phone number must contain exactly 10 digits.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     // Map gender values from frontend to database format
     const genderMap: Record<string, string> = {
@@ -183,7 +193,18 @@ export default function Citizens() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" name="phone" />
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      required
+                      onChange={(e) => {
+                        e.target.value = e.target.value.replace(/\D/g, "");
+                      }}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="date_of_birth">Date of Birth</Label>

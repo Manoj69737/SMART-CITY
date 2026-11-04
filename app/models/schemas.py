@@ -1,7 +1,7 @@
 """
 Pydantic models for request/response validation
 """
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Optional, List, Dict
 from datetime import date, datetime
 
@@ -35,6 +35,13 @@ class CitizenBase(BaseModel):
     phone: Optional[str] = None
     email: Optional[str] = None
     address_id: Optional[int] = None
+
+    @field_validator("phone")
+    @classmethod
+    def validate_phone(cls, phone: Optional[str]) -> Optional[str]:
+        if phone is not None and (len(phone) != 10 or not phone.isascii() or not phone.isdigit()):
+            raise ValueError("Phone number must contain exactly 10 digits")
+        return phone
 
 class CitizenCreate(CitizenBase):
     pass
@@ -447,4 +454,3 @@ class ComplaintUpdateHistory(ComplaintUpdateHistoryBase):
 class AdminLoginRequest(BaseModel):
     username: str
     password: str
-
