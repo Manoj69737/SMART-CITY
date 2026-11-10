@@ -39,3 +39,24 @@ dist/
 build/
 *.egg-info/
 
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Private credentials
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+
+# Build files
+dist/
+build/
+
+# VS Code
+.vscode/

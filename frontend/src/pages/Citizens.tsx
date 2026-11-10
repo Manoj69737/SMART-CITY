@@ -93,7 +93,7 @@ export default function Citizens() {
 
     // Helper function to convert empty strings to null
     const getValueOrNull = (
-      value: FormDataEntryValue | null
+      value: FormDataEntryValue | null,
     ): string | null => {
       if (!value || (typeof value === "string" && value.trim() === "")) {
         return null;
@@ -189,7 +189,7 @@ export default function Citizens() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" required />
+                    <Input id="email" name="email" type="text" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
@@ -197,13 +197,13 @@ export default function Citizens() {
                       id="phone"
                       name="phone"
                       type="tel"
-                      inputMode="numeric"
-                      pattern="[0-9]{10}"
-                      maxLength={10}
-                      required
-                      onChange={(e) => {
-                        e.target.value = e.target.value.replace(/\D/g, "");
-                      }}
+                      // inputMode="numeric"
+                      // pattern="[0-9]{10}"
+                      // maxLength={10}
+                      // required
+                      // onChange={(e) => {
+                      //   e.target.value = e.target.value.replace(/\D/g, "");
+                      // }}
                     />
                   </div>
                   <div className="space-y-2">
